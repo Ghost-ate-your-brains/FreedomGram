@@ -1,0 +1,12 @@
+{
+    "home": {
+        "import": "from libs.uix.baseclass.home_screen import HomeScreen",
+        "kv": "libs/uix/kv/home_screen.kv",
+        "object": "HomeScreen()"
+    },
+    "chats": {
+        "import": "from libs.uix.baseclass.chats import ChatsTab",
+        "kv": "libs/uix/kv/chats.kv",
+        "object": "ChatsTab()"
+    }
+}
