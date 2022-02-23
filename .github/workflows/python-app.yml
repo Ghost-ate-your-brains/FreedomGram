@@ -38,6 +38,6 @@ jobs:
         cd buildozer
         sudo python setup.py install
         cd ..
-        rm -rf buildozer
+        sudo rm -rf buildozer
         # building app for android platform
         buildozer -v android debug
