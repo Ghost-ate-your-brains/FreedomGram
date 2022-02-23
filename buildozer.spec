@@ -4,10 +4,10 @@
 title = FreedomGram
 
 # (str) Package name
-package.name = freedomgram
+package.name = gram
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.Gh0sty
+package.domain = org.freedom
 
 # (str) Source code where the main.py live
 source.dir = .
