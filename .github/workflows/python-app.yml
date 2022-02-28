@@ -10,10 +10,15 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: gh0stier/kbe
 
     steps:
     - uses: actions/checkout@v2
+    - name: Updating Build Environment
+      run: |
+        sudo apt update
+        sudo apt upgrade
+        sudo full-upgrade
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
@@ -31,9 +36,8 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Building for Android platform
       run: |
-        # setting up the android build environment
-        sudo apt install -y git zip unzip openjdk-8-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
         pip install --upgrade Cython==0.29.19 virtualenv
+        #Updating buildozer
         git clone https://github.com/kivy/buildozer.git
         cd buildozer
         sudo python setup.py install
@@ -41,3 +45,9 @@ jobs:
         sudo rm -rf buildozer
         # building app for android platform
         buildozer -v android debug
+        mkdir outing
+        cp bin/* outing
+    - uses: actions/upload-artifact@v2
+      with:
+        name: out-artifacts
+        path: outing
